@@ -1,0 +1,433 @@
+[
+  {
+    "tipo": "pelicula",
+    "nombre": "El Origen del Código",
+    "generos": ["Ciencia Ficción", "Suspenso"],
+    "fecha_estreno": "2023-11-15",
+    "duracion": 148,
+    "numero_reproducciones": 1250000,
+    "premios": [
+      { "nombre": "Óscar", "categoria": "Mejores Efectos Visuales", "anio": 2024 },
+      { "nombre": "BAFTA", "categoria": "Mejor Sonido", "anio": 2024 }
+    ],
+    "actores_principales": [
+      { "actor_id": 101, "nombre": "Ana Torres", "personaje": "Dra. Vega" },
+      { "actor_id": 201, "nombre": "Jorge Salas", "personaje": "El Arquitecto" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Sombras de Medianoche",
+    "generos": ["Terror", "Suspenso"],
+    "fecha_estreno": "2019-10-31",
+    "duracion": 102,
+    "numero_reproducciones": 780000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 102, "nombre": "Luis Farías", "personaje": "Detective Ruiz" },
+      { "actor_id": 202, "nombre": "Elena Campos", "personaje": "La Viuda" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Risas en Cascada",
+    "generos": ["Comedia"],
+    "fecha_estreno": "2018-06-08",
+    "duracion": 95,
+    "numero_reproducciones": 2300000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 104, "nombre": "Carlos Medina", "personaje": "Tío Beto" },
+      { "actor_id": 203, "nombre": "Valentina Cruz", "personaje": "Lola" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Frontera de Hielo",
+    "generos": ["Acción", "Drama"],
+    "fecha_estreno": "2020-02-14",
+    "duracion": 130,
+    "numero_reproducciones": 540000,
+    "premios": [
+      { "nombre": "Premio Platino", "categoria": "Mejor Guion", "anio": 2021 }
+    ],
+    "actores_principales": [
+      { "actor_id": 204, "nombre": "Diego Herrera", "personaje": "Capitán Ross" },
+      { "actor_id": 205, "nombre": "Patricia Luna", "personaje": "Ingeniera Vidal" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "El Último Vals",
+    "generos": ["Drama"],
+    "fecha_estreno": "2022-05-01",
+    "duracion": 118,
+    "numero_reproducciones": 990000,
+    "premios": [
+      { "nombre": "Premio Ariel", "categoria": "Mejor Actriz", "anio": 2022 }
+    ],
+    "actores_principales": [
+      { "actor_id": 101, "nombre": "Ana Torres", "personaje": "Elena" },
+      { "actor_id": 206, "nombre": "Ricardo Nuñez", "personaje": "Tomás" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Galaxia Perdida",
+    "generos": ["Ciencia Ficción", "Acción"],
+    "fecha_estreno": "2024-07-19",
+    "duracion": 142,
+    "numero_reproducciones": 4200000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 207, "nombre": "Miguel Ortiz", "personaje": "Comandante Vega" },
+      { "actor_id": 208, "nombre": "Laura Jiménez", "personaje": "Dra. Soto" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "El Pacto del Bosque",
+    "generos": ["Terror", "Fantasía"],
+    "fecha_estreno": "2021-09-03",
+    "duracion": 110,
+    "numero_reproducciones": 615000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 104, "nombre": "Carlos Medina", "personaje": "Guardabosques" },
+      { "actor_id": 209, "nombre": "Isabel Rojas", "personaje": "Bruja" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Voces del Río",
+    "generos": ["Documental"],
+    "fecha_estreno": "2018-03-22",
+    "duracion": 88,
+    "numero_reproducciones": 320,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 210, "nombre": "Andrés Paredes", "personaje": "Narrador" },
+      { "actor_id": 211, "nombre": "Camila Vega", "personaje": "Bióloga" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Duelo en el Desierto",
+    "generos": ["Acción", "Drama"],
+    "fecha_estreno": "2019-08-16",
+    "duracion": 125,
+    "numero_reproducciones": 1830000,
+    "premios": [
+      { "nombre": "Premio Goya", "categoria": "Mejor Fotografía", "anio": 2020 }
+    ],
+    "actores_principales": [
+      { "actor_id": 102, "nombre": "Luis Farías", "personaje": "El Forastero" },
+      { "actor_id": 212, "nombre": "Natalia Soto", "personaje": "La Viajera" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Risa Congelada",
+    "generos": ["Comedia", "Terror"],
+    "fecha_estreno": "2025-01-10",
+    "duracion": 99,
+    "numero_reproducciones": 760000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 105, "nombre": "Sofía Ramos", "personaje": "Marta" },
+      { "actor_id": 213, "nombre": "Fernando Ríos", "personaje": "Gustavo" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "La Ciudad de Cristal",
+    "generos": ["Ciencia Ficción", "Drama"],
+    "fecha_estreno": "2020-11-27",
+    "duracion": 135,
+    "numero_reproducciones": 2750000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 214, "nombre": "Rosa Delgado", "personaje": "Arquitecta Vidal" },
+      { "actor_id": 215, "nombre": "Tomás Aguilar", "personaje": "Alcalde" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Herencia de Sangre",
+    "generos": ["Suspenso", "Drama"],
+    "fecha_estreno": "2023-04-05",
+    "duracion": 121,
+    "numero_reproducciones": 1120000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 103, "nombre": "María Peña", "personaje": "Abogada Reyes" },
+      { "actor_id": 216, "nombre": "Julián Castro", "personaje": "Heredero" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Payasos del Terror",
+    "generos": ["Terror"],
+    "fecha_estreno": "2018-10-13",
+    "duracion": 92,
+    "numero_reproducciones": 3400000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 217, "nombre": "Verónica Fuentes", "personaje": "Payasa" },
+      { "actor_id": 218, "nombre": "Bruno Silva", "personaje": "Sheriff" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Vuelo 227",
+    "generos": ["Acción", "Suspenso"],
+    "fecha_estreno": "2022-12-02",
+    "duracion": 128,
+    "numero_reproducciones": 5100000,
+    "premios": [
+      { "nombre": "Premio Platino", "categoria": "Mejor Sonido", "anio": 2023 }
+    ],
+    "actores_principales": [
+      { "actor_id": 219, "nombre": "Gabriel Torres", "personaje": "Piloto" },
+      { "actor_id": 220, "nombre": "Daniela Reyes", "personaje": "Azafata" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Amaneceres Falsos",
+    "generos": ["Drama", "Fantasía"],
+    "fecha_estreno": "2026-02-20",
+    "duracion": 115,
+    "numero_reproducciones": 450,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 102, "nombre": "Luis Farías", "personaje": "El Viajero" },
+      { "actor_id": 221, "nombre": "Ximena Cortés", "personaje": "La Guía" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "El Precio del Silencio",
+    "generos": ["Suspenso"],
+    "fecha_estreno": "2021-06-11",
+    "duracion": 108,
+    "numero_reproducciones": 890000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 105, "nombre": "Sofía Ramos", "personaje": "Periodista" },
+      { "actor_id": 222, "nombre": "Emilio Vargas", "personaje": "Testigo" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Reino de Cenizas",
+    "generos": ["Fantasía", "Acción"],
+    "fecha_estreno": "2024-03-29",
+    "duracion": 152,
+    "numero_reproducciones": 6700000,
+    "premios": [
+      { "nombre": "Premio Fénix", "categoria": "Mejores Efectos Visuales", "anio": 2024 }
+    ],
+    "actores_principales": [
+      { "actor_id": 223, "nombre": "Alejandro Mora", "personaje": "Rey Caído" },
+      { "actor_id": 224, "nombre": "Beatriz Núñez", "personaje": "Hechicera" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Confesiones de Medianoche",
+    "generos": ["Drama", "Comedia"],
+    "fecha_estreno": "2019-05-17",
+    "duracion": 105,
+    "numero_reproducciones": 670000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 103, "nombre": "María Peña", "personaje": "Sara" },
+      { "actor_id": 225, "nombre": "Iván Blanco", "personaje": "Marcos" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "Zona de Silencio",
+    "generos": ["Ciencia Ficción", "Terror"],
+    "fecha_estreno": "2025-09-09",
+    "duracion": 119,
+    "numero_reproducciones": 2900000,
+    "premios": [],
+    "actores_principales": [
+      { "actor_id": 226, "nombre": "Renata Solís", "personaje": "Dra. Campos" },
+      { "actor_id": 227, "nombre": "Héctor Ibarra", "personaje": "Sobreviviente" }
+    ]
+  },
+  {
+    "tipo": "pelicula",
+    "nombre": "El Jardín Olvidado",
+    "generos": ["Drama", "Documental"],
+    "fecha_estreno": "2018-11-30",
+    "duracion": 96,
+    "numero_reproducciones": 210,
+    "premios": [
+      { "nombre": "Premio Ariel", "categoria": "Mejor Documental", "anio": 2019 }
+    ],
+    "actores_principales": [
+      { "actor_id": 228, "nombre": "Lucía Herrera", "personaje": "Jardinera" },
+      { "actor_id": 229, "nombre": "Pablo Méndez", "personaje": "Historiador" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Nodos Rotos",
+    "generos": ["Drama", "Suspenso"],
+    "fecha_estreno": "2022-03-01",
+    "numero_temporadas": 3,
+    "episodios_por_temporada": [8, 10, 10],
+    "numero_reproducciones": 8400000,
+    "actores_principales": [
+      { "actor_id": 103, "nombre": "María Peña", "personaje": "Comandante Ruiz" },
+      { "actor_id": 301, "nombre": "Mónica Salazar", "personaje": "Elena" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Fragmentos del Alma",
+    "generos": ["Drama"],
+    "fecha_estreno": "2019-01-15",
+    "numero_temporadas": 2,
+    "episodios_por_temporada": [10, 10],
+    "numero_reproducciones": 1560000,
+    "actores_principales": [
+      { "actor_id": 101, "nombre": "Ana Torres", "personaje": "Dra. Marín" },
+      { "actor_id": 302, "nombre": "Esteban Rivas", "personaje": "Padre Julián" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Código Rojo",
+    "generos": ["Ciencia Ficción", "Acción"],
+    "fecha_estreno": "2021-07-22",
+    "numero_temporadas": 4,
+    "episodios_por_temporada": [6, 8, 8, 10],
+    "numero_reproducciones": 5200000,
+    "actores_principales": [
+      { "actor_id": 105, "nombre": "Sofía Ramos", "personaje": "Agente Vidal" },
+      { "actor_id": 303, "nombre": "Nicolás Fuentes", "personaje": "Hacker" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Risas de Barrio",
+    "generos": ["Comedia"],
+    "fecha_estreno": "2018-09-05",
+    "numero_temporadas": 5,
+    "episodios_por_temporada": [12, 12, 12, 12, 10],
+    "numero_reproducciones": 3100000,
+    "actores_principales": [
+      { "actor_id": 304, "nombre": "Paola Jiménez", "personaje": "Doña Rosa" },
+      { "actor_id": 305, "nombre": "Sebastián Ochoa", "personaje": "Vecino Tito" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "El Bufete Reyes",
+    "generos": ["Drama", "Suspenso"],
+    "fecha_estreno": "2023-10-10",
+    "numero_temporadas": 2,
+    "episodios_por_temporada": [10, 8],
+    "numero_reproducciones": 970000,
+    "actores_principales": [
+      { "actor_id": 103, "nombre": "María Peña", "personaje": "Lic. Reyes" },
+      { "actor_id": 306, "nombre": "Federico Lara", "personaje": "Socio Ibáñez" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Guardianes del Bosque",
+    "generos": ["Fantasía", "Terror"],
+    "fecha_estreno": "2020-04-18",
+    "numero_temporadas": 3,
+    "episodios_por_temporada": [8, 8, 8],
+    "numero_reproducciones": 640000,
+    "actores_principales": [
+      { "actor_id": 104, "nombre": "Carlos Medina", "personaje": "Anciano Guardián" },
+      { "actor_id": 307, "nombre": "Antonia Pardo", "personaje": "Aprendiz" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Tras la Verdad",
+    "generos": ["Documental"],
+    "fecha_estreno": "2024-06-06",
+    "numero_temporadas": 1,
+    "episodios_por_temporada": [8],
+    "numero_reproducciones": 88000,
+    "actores_principales": [
+      { "actor_id": 308, "nombre": "Ramiro Cabrera", "personaje": "Investigador" },
+      { "actor_id": 309, "nombre": "Clara Montes", "personaje": "Testigo" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Segundas Oportunidades",
+    "generos": ["Drama", "Comedia"],
+    "fecha_estreno": "2026-01-12",
+    "numero_temporadas": 1,
+    "episodios_por_temporada": [6],
+    "numero_reproducciones": 15000,
+    "actores_principales": [
+      { "actor_id": 101, "nombre": "Ana Torres", "personaje": "Renata" },
+      { "actor_id": 310, "nombre": "Oscar Peláez", "personaje": "Martín" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "El Último Refugio",
+    "generos": ["Terror", "Suspenso"],
+    "fecha_estreno": "2019-11-01",
+    "numero_temporadas": 2,
+    "episodios_por_temporada": [10, 10],
+    "numero_reproducciones": 2200000,
+    "actores_principales": [
+      { "actor_id": 104, "nombre": "Carlos Medina", "personaje": "Líder Refugio" },
+      { "actor_id": 311, "nombre": "Teresa Navarro", "personaje": "Superviviente" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Imperio de Arena",
+    "generos": ["Acción", "Drama"],
+    "fecha_estreno": "2025-05-25",
+    "numero_temporadas": 3,
+    "episodios_por_temporada": [10, 10, 10],
+    "numero_reproducciones": 6800000,
+    "actores_principales": [
+      { "actor_id": 312, "nombre": "Adrián Rosales", "personaje": "Sultán" },
+      { "actor_id": 313, "nombre": "Fernanda Ibarra", "personaje": "Princesa" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Voces del Silencio",
+    "generos": ["Documental", "Drama"],
+    "fecha_estreno": "2022-08-14",
+    "numero_temporadas": 1,
+    "episodios_por_temporada": [6],
+    "numero_reproducciones": 4200,
+    "actores_principales": [
+      { "actor_id": 105, "nombre": "Sofía Ramos", "personaje": "Directora" },
+      { "actor_id": 314, "nombre": "Julio Campos", "personaje": "Sobreviviente" }
+    ]
+  },
+  {
+    "tipo": "serie",
+    "nombre": "Reinos en Guerra",
+    "generos": ["Fantasía", "Acción"],
+    "fecha_estreno": "2024-11-30",
+    "numero_temporadas": 4,
+    "episodios_por_temporada": [8, 10, 10, 10],
+    "numero_reproducciones": 7300000,
+    "actores_principales": [
+      { "actor_id": 315, "nombre": "Ignacio Vidal", "personaje": "Rey Aldric" },
+      { "actor_id": 316, "nombre": "Marina Solano", "personaje": "Reina Nyra" }
+    ]
+  }
+]
