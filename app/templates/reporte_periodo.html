@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Producciones por período{% endblock %}
+{% block heading %}Producciones estrenadas en un período{% endblock %}
+{% block content %}
+<form method="get">
+  <label for="fecha_inicio">Desde:</label>
+  <input type="date" id="fecha_inicio" name="fecha_inicio" value="{{ fecha_inicio }}" required>
+  <label for="fecha_fin">Hasta:</label>
+  <input type="date" id="fecha_fin" name="fecha_fin" value="{{ fecha_fin }}" required>
+  <button type="submit">Buscar</button>
+</form>
+
+{% if fecha_inicio and fecha_fin %}
+  {% if resultados %}
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Géneros</th>
+        <th>Fecha de estreno</th>
+        <th>Reproducciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in resultados %}
+      <tr>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.tipo }}</td>
+        <td>{{ p.generos | join(', ') }}</td>
+        <td>{{ p.fecha_estreno }}</td>
+        <td>{{ p.numero_reproducciones }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="vacio">No hay producciones estrenadas en ese período.</p>
+  {% endif %}
+{% endif %}
+{% endblock %}

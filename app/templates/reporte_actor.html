@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Producciones por actor{% endblock %}
+{% block heading %}Producciones donde participa un actor{% endblock %}
+{% block content %}
+<form method="get">
+  <label for="actor">Nombre del actor:</label>
+  <input type="text" id="actor" name="actor" value="{{ actor }}" placeholder="Ej: Ana Torres" required>
+  <button type="submit">Buscar</button>
+</form>
+
+{% if actor %}
+  {% if resultados %}
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Personaje</th>
+        <th>Fecha de estreno</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in resultados %}
+      <tr>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.tipo }}</td>
+        <td>
+          {% for a in p.actores_principales %}
+            {% if a.nombre == actor %}{{ a.personaje }}{% endif %}
+          {% endfor %}
+        </td>
+        <td>{{ p.fecha_estreno }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="vacio">No se encontraron producciones con el actor "{{ actor }}".</p>
+  {% endif %}
+{% endif %}
+{% endblock %}

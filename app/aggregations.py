@@ -22,6 +22,9 @@ def producciones_por_periodo(coleccion, fecha_inicio, fecha_fin):
 
 def top_reproducciones(coleccion, limite=10):
     """Reporte 2: producciones con mayor número de reproducciones (top N)."""
+    # $limit exige un entero positivo: con n=0 o negativo Mongo rechaza el
+    # pipeline entero (OperationFailure), así que se acota a un mínimo de 1.
+    limite = max(1, limite)
     pipeline = [
         # Etapa 1 ($sort): ordena todas las producciones de mayor a menor
         # numero_reproducciones. Al usar el índice descendente sobre este
@@ -61,6 +64,8 @@ def producciones_por_actor(coleccion, nombre_actor):
 
 def actores_con_mas_participaciones(coleccion, limite=10):
     """Reporte 5: actores con mayor número de participaciones (agrupado)."""
+    # Mismo límite mínimo de 1 que en top_reproducciones (ver comentario ahí).
+    limite = max(1, limite)
     pipeline = [
         # Etapa 1 ($unwind): "desenrolla" el array actores_principales,
         # generando un documento independiente por cada actor de cada

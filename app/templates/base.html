@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Catálogo de Streaming{% endblock %}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; color: #222; }
+    nav { margin-bottom: 1.5rem; }
+    nav a { margin-right: 1rem; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; vertical-align: top; }
+    th { background: #f0f0f0; }
+    form { margin-bottom: 1rem; }
+    label { margin-right: 0.3rem; }
+    input { padding: 0.3rem; margin-right: 1rem; }
+    .vacio { color: #666; font-style: italic; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('vistas.index') }}">Inicio</a>
+    <a href="{{ url_for('vistas.vista_periodo') }}">Por período</a>
+    <a href="{{ url_for('vistas.vista_top_reproducciones') }}">Top reproducciones</a>
+    <a href="{{ url_for('vistas.vista_por_genero') }}">Por género</a>
+    <a href="{{ url_for('vistas.vista_por_actor') }}">Por actor</a>
+    <a href="{{ url_for('vistas.vista_actores_mas_participaciones') }}">Actores con más participaciones</a>
+  </nav>
+  <h1>{% block heading %}{% endblock %}</h1>
+  {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block heading %}Catálogo de streaming{% endblock %}
+{% block content %}
+<p>Selecciona un reporte en el menú superior.</p>
+<ul>
+  <li><a href="{{ url_for('vistas.vista_periodo') }}">Producciones estrenadas en un período</a></li>
+  <li><a href="{{ url_for('vistas.vista_top_reproducciones') }}">Producciones con mayor número de reproducciones</a></li>
+  <li><a href="{{ url_for('vistas.vista_por_genero') }}">Producciones por género</a></li>
+  <li><a href="{{ url_for('vistas.vista_por_actor') }}">Producciones donde participa un actor</a></li>
+  <li><a href="{{ url_for('vistas.vista_actores_mas_participaciones') }}">Actores con mayor número de participaciones</a></li>
+</ul>
+{% endblock %}

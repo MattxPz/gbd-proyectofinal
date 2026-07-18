@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Producciones por género{% endblock %}
+{% block heading %}Producciones por género{% endblock %}
+{% block content %}
+<form method="get">
+  <label for="genero">Género:</label>
+  <input type="text" id="genero" name="genero" value="{{ genero }}" placeholder="Ej: Drama" required>
+  <button type="submit">Buscar</button>
+</form>
+
+{% if genero %}
+  {% if resultados %}
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Géneros</th>
+        <th>Fecha de estreno</th>
+        <th>Reproducciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in resultados %}
+      <tr>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.tipo }}</td>
+        <td>{{ p.generos | join(', ') }}</td>
+        <td>{{ p.fecha_estreno }}</td>
+        <td>{{ p.numero_reproducciones }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="vacio">No hay producciones del género "{{ genero }}".</p>
+  {% endif %}
+{% endif %}
+{% endblock %}
