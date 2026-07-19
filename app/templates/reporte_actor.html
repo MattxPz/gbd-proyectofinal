@@ -7,7 +7,12 @@
   <form method="get" class="filter-form">
     <div class="filter-field">
       <label for="actor">Nombre del actor</label>
-      <input type="text" id="actor" name="actor" value="{{ actor }}" placeholder="Ej: Ana Torres" required>
+      <input type="text" id="actor" name="actor" value="{{ actor }}" placeholder="Ej: Ana Torres" list="actores-list" autocomplete="off" required>
+      <datalist id="actores-list">
+        {% for a in actores_disponibles %}
+        <option value="{{ a.nombre }}"></option>
+        {% endfor %}
+      </datalist>
     </div>
     <button type="submit" class="btn">Buscar</button>
   </form>
@@ -52,4 +57,22 @@
   {% endif %}
 </div>
 {% endif %}
+
+<div class="card">
+  <p class="card-title">Todos los actores</p>
+  <p class="card-subtitle">{{ actores_disponibles|length }} actor(es), ordenados alfabéticamente por apellido</p>
+  {% if actores_disponibles %}
+  <div class="actor-list-grid">
+    {% for a in actores_disponibles %}
+    <a class="actor-chip{% if a.nombre == actor %} actor-chip-active{% endif %}"
+       href="{{ url_for('vistas.vista_por_actor', actor=a.nombre) }}">{{ a.nombre }}</a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <div class="empty-icon">&#128100;</div>
+    No hay actores registrados todavía.
+  </div>
+  {% endif %}
+</div>
 {% endblock %}

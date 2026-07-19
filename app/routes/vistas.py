@@ -4,6 +4,8 @@ Reutiliza los mismos pipelines de app/aggregations.py que usan los
 endpoints JSON en app/routes/reportes.py; solo cambia el formato de
 salida (render_template en vez de jsonify).
 """
+import unicodedata
+
 from flask import Blueprint, render_template, request
 from pymongo.errors import PyMongoError
 
@@ -59,6 +61,13 @@ def vista_top_reproducciones():
     return render_template("reporte_top.html", resultados=resultados, n=n)
 
 
+def _sin_acentos(texto):
+    """Quita acentos/diacríticos para que el orden alfabético no separe,
+    por ejemplo, "Núñez" de "Nunez" en distintos bloques."""
+    normalizado = unicodedata.normalize("NFKD", texto)
+    return "".join(c for c in normalizado if not unicodedata.combining(c))
+
+
 @vistas_bp.route("/vista/por-genero")
 def vista_por_genero():
     genero = request.args.get("genero", "")
@@ -67,7 +76,16 @@ def vista_por_genero():
     if genero:
         resultados = aggregations.producciones_por_genero(get_producciones_collection(), genero)
 
-    return render_template("reporte_genero.html", resultados=resultados, genero=genero)
+    # Géneros distintos en la colección, para ofrecerlos como sugerencias
+    # de autocompletado en el campo de búsqueda (ver <datalist> en la plantilla).
+    generos_disponibles = sorted(get_producciones_collection().distinct("generos"))
+
+    return render_template(
+        "reporte_genero.html",
+        resultados=resultados,
+        genero=genero,
+        generos_disponibles=generos_disponibles,
+    )
 
 
 @vistas_bp.route("/vista/por-actor")
@@ -78,7 +96,19 @@ def vista_por_actor():
     if actor:
         resultados = aggregations.producciones_por_actor(get_producciones_collection(), actor)
 
-    return render_template("reporte_actor.html", resultados=resultados, actor=actor)
+    # Listado completo de actores para mostrar en pantalla, ordenado
+    # alfabéticamente por apellido (última palabra del nombre completo).
+    actores = aggregations.todos_los_actores(get_producciones_collection())
+    actores_disponibles = sorted(
+        actores, key=lambda a: _sin_acentos(a["nombre"].split()[-1]).lower()
+    )
+
+    return render_template(
+        "reporte_actor.html",
+        resultados=resultados,
+        actor=actor,
+        actores_disponibles=actores_disponibles,
+    )
 
 
 @vistas_bp.route("/vista/actores-mas-participaciones")

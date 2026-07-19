@@ -89,3 +89,22 @@ def actores_con_mas_participaciones(coleccion, limite=10):
         {"$limit": limite},
     ]
     return list(coleccion.aggregate(pipeline))
+
+
+def todos_los_actores(coleccion):
+    """Lista de todos los actores distintos del catálogo (sin límite ni orden
+    de participaciones). Se usa para el listado de selección en el reporte
+    por actor; el orden alfabético por apellido se aplica en Python porque
+    el nombre completo se guarda como un único string."""
+    pipeline = [
+        # Mismo $unwind + $group por actor_id que en actores_con_mas_participaciones,
+        # pero aquí solo interesa la lista de actores únicos, no su conteo.
+        {"$unwind": "$actores_principales"},
+        {
+            "$group": {
+                "_id": "$actores_principales.actor_id",
+                "nombre": {"$first": "$actores_principales.nombre"},
+            }
+        },
+    ]
+    return list(coleccion.aggregate(pipeline))

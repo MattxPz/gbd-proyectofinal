@@ -7,7 +7,12 @@
   <form method="get" class="filter-form">
     <div class="filter-field">
       <label for="genero">Género</label>
-      <input type="text" id="genero" name="genero" value="{{ genero }}" placeholder="Ej: Drama" required>
+      <input type="text" id="genero" name="genero" value="{{ genero }}" placeholder="Ej: Drama" list="generos-list" autocomplete="off" required>
+      <datalist id="generos-list">
+        {% for g in generos_disponibles %}
+        <option value="{{ g }}"></option>
+        {% endfor %}
+      </datalist>
     </div>
     <button type="submit" class="btn">Buscar</button>
   </form>
