@@ -1,13 +1,69 @@
 {% extends "base.html" %}
 {% block title %}Inicio{% endblock %}
-{% block heading %}Catálogo de streaming{% endblock %}
+{% block heading %}Panel general{% endblock %}
+{% block subheading %}Resumen de la base de datos de streaming{% endblock %}
+{% block topbar_extra %}
+  {% if db_conectado %}
+  <span class="db-status"><span class="dot"></span> MongoDB Atlas conectado</span>
+  {% else %}
+  <span class="db-status db-status-error"><span class="dot"></span> Sin conexión a la base de datos</span>
+  {% endif %}
+{% endblock %}
 {% block content %}
-<p>Selecciona un reporte en el menú superior.</p>
-<ul>
-  <li><a href="{{ url_for('vistas.vista_periodo') }}">Producciones estrenadas en un período</a></li>
-  <li><a href="{{ url_for('vistas.vista_top_reproducciones') }}">Producciones con mayor número de reproducciones</a></li>
-  <li><a href="{{ url_for('vistas.vista_por_genero') }}">Producciones por género</a></li>
-  <li><a href="{{ url_for('vistas.vista_por_actor') }}">Producciones donde participa un actor</a></li>
-  <li><a href="{{ url_for('vistas.vista_actores_mas_participaciones') }}">Actores con mayor número de participaciones</a></li>
-</ul>
+
+{% if db_conectado %}
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-label">Producciones totales</div>
+    <div class="stat-value">{{ stats.total_producciones }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Géneros distintos</div>
+    <div class="stat-value">{{ stats.total_generos }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Actores registrados</div>
+    <div class="stat-value">{{ stats.total_actores }}</div>
+  </div>
+</div>
+{% else %}
+<div class="card">
+  <div class="empty-state">
+    <div class="empty-icon">&#9888;</div>
+    No fue posible obtener datos de MongoDB Atlas. Verifica la variable <code>MONGODB_URI</code> en el archivo <code>.env</code> y que el clúster esté accesible.
+  </div>
+</div>
+{% endif %}
+
+<div class="card">
+  <p class="card-title">Reportes disponibles</p>
+  <p class="card-subtitle">Selecciona un reporte para consultarlo contra la colección "producciones".</p>
+  <div class="report-grid">
+    <a class="report-card" href="{{ url_for('vistas.vista_periodo') }}">
+      <div class="report-icon">&#128197;</div>
+      <h3>Por período</h3>
+      <p>Producciones estrenadas entre dos fechas.</p>
+    </a>
+    <a class="report-card" href="{{ url_for('vistas.vista_top_reproducciones') }}">
+      <div class="report-icon">&#128200;</div>
+      <h3>Top reproducciones</h3>
+      <p>Producciones con mayor número de reproducciones.</p>
+    </a>
+    <a class="report-card" href="{{ url_for('vistas.vista_por_genero') }}">
+      <div class="report-icon">&#127916;</div>
+      <h3>Por género</h3>
+      <p>Producciones filtradas por un género específico.</p>
+    </a>
+    <a class="report-card" href="{{ url_for('vistas.vista_por_actor') }}">
+      <div class="report-icon">&#128100;</div>
+      <h3>Por actor</h3>
+      <p>Producciones donde participa un actor determinado.</p>
+    </a>
+    <a class="report-card" href="{{ url_for('vistas.vista_actores_mas_participaciones') }}">
+      <div class="report-icon">&#127942;</div>
+      <h3>Actores destacados</h3>
+      <p>Actores con mayor número de participaciones.</p>
+    </a>
+  </div>
+</div>
 {% endblock %}

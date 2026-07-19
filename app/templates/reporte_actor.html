@@ -1,15 +1,24 @@
 {% extends "base.html" %}
 {% block title %}Producciones por actor{% endblock %}
-{% block heading %}Producciones donde participa un actor{% endblock %}
+{% block heading %}Por actor{% endblock %}
+{% block subheading %}Producciones donde participa un actor determinado{% endblock %}
 {% block content %}
-<form method="get">
-  <label for="actor">Nombre del actor:</label>
-  <input type="text" id="actor" name="actor" value="{{ actor }}" placeholder="Ej: Ana Torres" required>
-  <button type="submit">Buscar</button>
-</form>
+<div class="card">
+  <form method="get" class="filter-form">
+    <div class="filter-field">
+      <label for="actor">Nombre del actor</label>
+      <input type="text" id="actor" name="actor" value="{{ actor }}" placeholder="Ej: Ana Torres" required>
+    </div>
+    <button type="submit" class="btn">Buscar</button>
+  </form>
+</div>
 
 {% if actor %}
+<div class="card">
   {% if resultados %}
+  <p class="card-title">Resultados para "{{ actor }}"</p>
+  <p class="card-subtitle">{{ resultados|length }} producción(es) encontradas</p>
+  <div class="table-wrapper">
   <table>
     <thead>
       <tr>
@@ -23,7 +32,7 @@
       {% for p in resultados %}
       <tr>
         <td>{{ p.nombre }}</td>
-        <td>{{ p.tipo }}</td>
+        <td><span class="badge">{{ p.tipo }}</span></td>
         <td>
           {% for a in p.actores_principales %}
             {% if a.nombre == actor %}{{ a.personaje }}{% endif %}
@@ -34,8 +43,13 @@
       {% endfor %}
     </tbody>
   </table>
+  </div>
   {% else %}
-  <p class="vacio">No se encontraron producciones con el actor "{{ actor }}".</p>
+  <div class="empty-state">
+    <div class="empty-icon">&#128100;</div>
+    No se encontraron producciones con el actor "{{ actor }}".
+  </div>
   {% endif %}
+</div>
 {% endif %}
 {% endblock %}

@@ -1,15 +1,24 @@
 {% extends "base.html" %}
 {% block title %}Producciones por género{% endblock %}
-{% block heading %}Producciones por género{% endblock %}
+{% block heading %}Por género{% endblock %}
+{% block subheading %}Producciones filtradas por un género específico{% endblock %}
 {% block content %}
-<form method="get">
-  <label for="genero">Género:</label>
-  <input type="text" id="genero" name="genero" value="{{ genero }}" placeholder="Ej: Drama" required>
-  <button type="submit">Buscar</button>
-</form>
+<div class="card">
+  <form method="get" class="filter-form">
+    <div class="filter-field">
+      <label for="genero">Género</label>
+      <input type="text" id="genero" name="genero" value="{{ genero }}" placeholder="Ej: Drama" required>
+    </div>
+    <button type="submit" class="btn">Buscar</button>
+  </form>
+</div>
 
 {% if genero %}
+<div class="card">
   {% if resultados %}
+  <p class="card-title">Resultados para "{{ genero }}"</p>
+  <p class="card-subtitle">{{ resultados|length }} producción(es) encontradas</p>
+  <div class="table-wrapper">
   <table>
     <thead>
       <tr>
@@ -24,7 +33,7 @@
       {% for p in resultados %}
       <tr>
         <td>{{ p.nombre }}</td>
-        <td>{{ p.tipo }}</td>
+        <td><span class="badge">{{ p.tipo }}</span></td>
         <td>{{ p.generos | join(', ') }}</td>
         <td>{{ p.fecha_estreno }}</td>
         <td>{{ p.numero_reproducciones }}</td>
@@ -32,8 +41,13 @@
       {% endfor %}
     </tbody>
   </table>
+  </div>
   {% else %}
-  <p class="vacio">No hay producciones del género "{{ genero }}".</p>
+  <div class="empty-state">
+    <div class="empty-icon">&#127916;</div>
+    No hay producciones del género "{{ genero }}".
+  </div>
   {% endif %}
+</div>
 {% endif %}
 {% endblock %}

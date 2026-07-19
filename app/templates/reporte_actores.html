@@ -1,33 +1,47 @@
 {% extends "base.html" %}
 {% block title %}Actores con más participaciones{% endblock %}
-{% block heading %}Actores con mayor número de participaciones{% endblock %}
+{% block heading %}Actores destacados{% endblock %}
+{% block subheading %}Actores con mayor número de participaciones{% endblock %}
 {% block content %}
-<form method="get">
-  <label for="n">Top N:</label>
-  <input type="number" id="n" name="n" min="1" value="{{ n }}">
-  <button type="submit">Buscar</button>
-</form>
+<div class="card">
+  <form method="get" class="filter-form">
+    <div class="filter-field">
+      <label for="n">Top N</label>
+      <input type="number" id="n" name="n" min="1" value="{{ n }}">
+    </div>
+    <button type="submit" class="btn">Buscar</button>
+  </form>
+</div>
 
-{% if resultados %}
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Actor</th>
-      <th>Participaciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for a in resultados %}
-    <tr>
-      <td>{{ loop.index }}</td>
-      <td>{{ a.nombre }}</td>
-      <td>{{ a.participaciones }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% else %}
-<p class="vacio">No hay resultados.</p>
-{% endif %}
+<div class="card">
+  {% if resultados %}
+  <p class="card-title">Resultados</p>
+  <p class="card-subtitle">{{ resultados|length }} actor(es) encontrados</p>
+  <div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Actor</th>
+        <th>Participaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in resultados %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ a.nombre }}</td>
+        <td><span class="badge">{{ a.participaciones }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <div class="empty-icon">&#127942;</div>
+    No hay resultados.
+  </div>
+  {% endif %}
+</div>
 {% endblock %}

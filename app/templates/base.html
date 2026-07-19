@@ -2,30 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Catálogo de Streaming{% endblock %}</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; color: #222; }
-    nav { margin-bottom: 1.5rem; }
-    nav a { margin-right: 1rem; }
-    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
-    th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; vertical-align: top; }
-    th { background: #f0f0f0; }
-    form { margin-bottom: 1rem; }
-    label { margin-right: 0.3rem; }
-    input { padding: 0.3rem; margin-right: 1rem; }
-    .vacio { color: #666; font-style: italic; }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-  <nav>
-    <a href="{{ url_for('vistas.index') }}">Inicio</a>
-    <a href="{{ url_for('vistas.vista_periodo') }}">Por período</a>
-    <a href="{{ url_for('vistas.vista_top_reproducciones') }}">Top reproducciones</a>
-    <a href="{{ url_for('vistas.vista_por_genero') }}">Por género</a>
-    <a href="{{ url_for('vistas.vista_por_actor') }}">Por actor</a>
-    <a href="{{ url_for('vistas.vista_actores_mas_participaciones') }}">Actores con más participaciones</a>
-  </nav>
-  <h1>{% block heading %}{% endblock %}</h1>
-  {% block content %}{% endblock %}
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon">CS</div>
+        <div>
+          <span class="sidebar-brand-text">Catálogo Streaming</span>
+          <span class="sidebar-brand-sub">Reportes MongoDB Atlas</span>
+        </div>
+      </div>
+      <ul class="sidebar-nav">
+        <li><a href="{{ url_for('vistas.index') }}" class="{{ 'active' if request.endpoint == 'vistas.index' }}"><span class="nav-icon">&#8962;</span> Inicio</a></li>
+        <li><a href="{{ url_for('vistas.vista_periodo') }}" class="{{ 'active' if request.endpoint == 'vistas.vista_periodo' }}"><span class="nav-icon">&#128197;</span> Por período</a></li>
+        <li><a href="{{ url_for('vistas.vista_top_reproducciones') }}" class="{{ 'active' if request.endpoint == 'vistas.vista_top_reproducciones' }}"><span class="nav-icon">&#128200;</span> Top reproducciones</a></li>
+        <li><a href="{{ url_for('vistas.vista_por_genero') }}" class="{{ 'active' if request.endpoint == 'vistas.vista_por_genero' }}"><span class="nav-icon">&#127916;</span> Por género</a></li>
+        <li><a href="{{ url_for('vistas.vista_por_actor') }}" class="{{ 'active' if request.endpoint == 'vistas.vista_por_actor' }}"><span class="nav-icon">&#128100;</span> Por actor</a></li>
+        <li><a href="{{ url_for('vistas.vista_actores_mas_participaciones') }}" class="{{ 'active' if request.endpoint == 'vistas.vista_actores_mas_participaciones' }}"><span class="nav-icon">&#127942;</span> Actores destacados</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        Gestión de Base de Datos &mdash; Proyecto Final
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <p class="topbar-title">{% block heading %}{% endblock %}</p>
+          <p class="topbar-subtitle">{% block subheading %}{% endblock %}</p>
+        </div>
+        <div>{% block topbar_extra %}{% endblock %}</div>
+      </header>
+
+      <main class="content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
 </body>
 </html>

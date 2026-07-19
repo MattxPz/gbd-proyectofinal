@@ -1,17 +1,28 @@
 {% extends "base.html" %}
 {% block title %}Producciones por período{% endblock %}
-{% block heading %}Producciones estrenadas en un período{% endblock %}
+{% block heading %}Por período{% endblock %}
+{% block subheading %}Producciones estrenadas dentro de un rango de fechas{% endblock %}
 {% block content %}
-<form method="get">
-  <label for="fecha_inicio">Desde:</label>
-  <input type="date" id="fecha_inicio" name="fecha_inicio" value="{{ fecha_inicio }}" required>
-  <label for="fecha_fin">Hasta:</label>
-  <input type="date" id="fecha_fin" name="fecha_fin" value="{{ fecha_fin }}" required>
-  <button type="submit">Buscar</button>
-</form>
+<div class="card">
+  <form method="get" class="filter-form">
+    <div class="filter-field">
+      <label for="fecha_inicio">Desde</label>
+      <input type="date" id="fecha_inicio" name="fecha_inicio" value="{{ fecha_inicio }}" required>
+    </div>
+    <div class="filter-field">
+      <label for="fecha_fin">Hasta</label>
+      <input type="date" id="fecha_fin" name="fecha_fin" value="{{ fecha_fin }}" required>
+    </div>
+    <button type="submit" class="btn">Buscar</button>
+  </form>
+</div>
 
 {% if fecha_inicio and fecha_fin %}
+<div class="card">
   {% if resultados %}
+  <p class="card-title">Resultados entre {{ fecha_inicio }} y {{ fecha_fin }}</p>
+  <p class="card-subtitle">{{ resultados|length }} producción(es) encontradas</p>
+  <div class="table-wrapper">
   <table>
     <thead>
       <tr>
@@ -26,7 +37,7 @@
       {% for p in resultados %}
       <tr>
         <td>{{ p.nombre }}</td>
-        <td>{{ p.tipo }}</td>
+        <td><span class="badge">{{ p.tipo }}</span></td>
         <td>{{ p.generos | join(', ') }}</td>
         <td>{{ p.fecha_estreno }}</td>
         <td>{{ p.numero_reproducciones }}</td>
@@ -34,8 +45,13 @@
       {% endfor %}
     </tbody>
   </table>
+  </div>
   {% else %}
-  <p class="vacio">No hay producciones estrenadas en ese período.</p>
+  <div class="empty-state">
+    <div class="empty-icon">&#128197;</div>
+    No hay producciones estrenadas en ese período.
+  </div>
   {% endif %}
+</div>
 {% endif %}
 {% endblock %}

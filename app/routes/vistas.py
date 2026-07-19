@@ -5,6 +5,7 @@ endpoints JSON en app/routes/reportes.py; solo cambia el formato de
 salida (render_template en vez de jsonify).
 """
 from flask import Blueprint, render_template, request
+from pymongo.errors import PyMongoError
 
 from app import aggregations
 from app.db import get_producciones_collection
@@ -14,7 +15,22 @@ vistas_bp = Blueprint("vistas", __name__)
 
 @vistas_bp.route("/")
 def index():
-    return render_template("index.html")
+    # Estadísticas rápidas para el dashboard, calculadas en vivo contra
+    # MongoDB Atlas. Si la conexión falla, se muestra el panel igual pero
+    # sin datos y con el estado de conexión en "error" (ver base.html).
+    stats = None
+    db_conectado = True
+    try:
+        coleccion = get_producciones_collection()
+        stats = {
+            "total_producciones": coleccion.count_documents({}),
+            "total_generos": len(coleccion.distinct("generos")),
+            "total_actores": len(coleccion.distinct("actores_principales.actor_id")),
+        }
+    except PyMongoError:
+        db_conectado = False
+
+    return render_template("index.html", stats=stats, db_conectado=db_conectado)
 
 
 @vistas_bp.route("/vista/periodo")
