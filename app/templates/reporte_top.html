@@ -17,6 +17,9 @@
   {% if resultados %}
   <p class="card-title">Resultados</p>
   <p class="card-subtitle">{{ resultados|length }} producción(es) encontradas</p>
+  <div class="chart-wrapper">
+    <canvas id="chart-top"></canvas>
+  </div>
   <div class="table-wrapper">
   <table>
     <thead>
@@ -48,4 +51,16 @@
   </div>
   {% endif %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+{% if resultados %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var labels = {{ resultados | map(attribute="nombre") | list | tojson }};
+    var data = {{ resultados | map(attribute="numero_reproducciones") | list | tojson }};
+    renderBarChart("chart-top", labels, data, { datasetLabel: "Reproducciones" });
+  });
+</script>
+{% endif %}
 {% endblock %}

@@ -22,6 +22,9 @@
   {% if resultados %}
   <p class="card-title">Resultados entre {{ fecha_inicio }} y {{ fecha_fin }}</p>
   <p class="card-subtitle">{{ resultados|length }} producción(es) encontradas</p>
+  <div class="chart-wrapper">
+    <canvas id="chart-periodo"></canvas>
+  </div>
   <div class="table-wrapper">
   <table>
     <thead>
@@ -53,5 +56,17 @@
   </div>
   {% endif %}
 </div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if resultados %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var labels = {{ resultados | map(attribute="fecha_estreno") | list | tojson }};
+    var data = {{ resultados | map(attribute="numero_reproducciones") | list | tojson }};
+    renderBarChart("chart-periodo", labels, data, { datasetLabel: "Reproducciones" });
+  });
+</script>
 {% endif %}
 {% endblock %}

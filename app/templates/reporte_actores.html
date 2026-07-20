@@ -17,6 +17,9 @@
   {% if resultados %}
   <p class="card-title">Resultados</p>
   <p class="card-subtitle">{{ resultados|length }} actor(es) encontrados</p>
+  <div class="chart-wrapper">
+    <canvas id="chart-actores"></canvas>
+  </div>
   <div class="table-wrapper">
   <table>
     <thead>
@@ -44,4 +47,16 @@
   </div>
   {% endif %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+{% if resultados %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var labels = {{ resultados | map(attribute="nombre") | list | tojson }};
+    var data = {{ resultados | map(attribute="participaciones") | list | tojson }};
+    renderBarChart("chart-actores", labels, data, { datasetLabel: "Participaciones" });
+  });
+</script>
+{% endif %}
 {% endblock %}
