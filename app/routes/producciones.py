@@ -3,10 +3,12 @@ from bson import ObjectId
 from bson.errors import InvalidId
 from flask import Blueprint, jsonify, request
 
+from app.auth import validar_api_key
 from app.db import get_producciones_collection
 from app.utils import serialize_doc
 
 producciones_bp = Blueprint("producciones", __name__, url_prefix="/producciones")
+producciones_bp.before_request(validar_api_key)
 
 
 def _parse_object_id(id_produccion):
